@@ -1,0 +1,10 @@
+a:hover {
+	color: #367889;
+	text-decoration:none !important;
+}
+html {
+	background-color: grey !important;
+}
+img {
+        width: 100% !important;
+}
