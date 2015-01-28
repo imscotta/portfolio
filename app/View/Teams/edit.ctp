@@ -9,6 +9,8 @@
 		echo $this->Form->input('city');
 		echo $this->Form->input('country');
 		echo $this->Form->input('history');
+		echo $this->Form->input('teamcolor1');
+		echo $this->Form->input('teamcolor2');
 		echo $this->Form->input('league_id');
 		echo $this->Form->input('Article');
 		echo $this->Form->input('User');

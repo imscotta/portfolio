@@ -1,6 +1,17 @@
-<div class="row">
+<div class="row" id="teamviewheader">
   <div class="col-md-12">
-	<h2><?php echo $team['Team']['name']; ?></h2>
+	<h1><?php echo $team['Team']['name']; ?></h1></div>
+</div>
+</div>
+<div class="row" id="teamviewheader">
+  <div class="col-md-12">
+Insert team tool bar with options:
+
+Team News: opens list of articles
+Team Stats: opens list of team stats
+Fantasy: opens list of players fantasy stats
+Blog: Blog on team, recent updates
+Social media: Show latest videos or posts from teams or players
 </div>
 </div>
 <div class="row">
