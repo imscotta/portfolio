@@ -102,18 +102,11 @@ foreach ($articles as $article): ?>
 
 
 
-<p>
-Insert photo reel or selection of videos
-<br>
-<br>
-Sort articles by teams and players and hottest topic
-<br>
-<br> Add shortcuts for filters to sort articles by banter, tekkers and news. Add more for players and teams. <br><br>his could possibly be  second navbar <br><br> Article view should include image, header, source, text description, comments, ratings, thumbs up and down <br><br>
-
-Feature article is set by default, if user is logged in, can be different. Feature article data passed as array to view
-
-</p>
-
+//Blogs will only apply to certain teams
+<br><br>
+//Contributors may write blogs for top teams or leagues or topics
+<br><br>
+//allow comments for blogs
 
 	</div>
 </div>

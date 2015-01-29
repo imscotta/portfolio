@@ -21,6 +21,12 @@ class LeaguesController extends AppController {
  * @return void
  */
 	public function index() {
+		$this->layout = 'boots';
+		$this->League->recursive = 0;
+		$this->set('leagues', $this->Paginator->paginate());
+	}
+
+	public function indexbackup() {
 		$this->League->recursive = 0;
 		$this->set('leagues', $this->Paginator->paginate());
 	}
@@ -33,12 +39,22 @@ class LeaguesController extends AppController {
  * @return void
  */
 	public function view($id = null) {
+		$this->layout = 'boots';
 		if (!$this->League->exists($id)) {
 			throw new NotFoundException(__('Invalid league'));
 		}
 		$options = array('conditions' => array('League.' . $this->League->primaryKey => $id));
 		$this->set('league', $this->League->find('first', $options));
 	}
+
+	public function viewbackup($id = null) {
+		if (!$this->League->exists($id)) {
+			throw new NotFoundException(__('Invalid league'));
+		}
+		$options = array('conditions' => array('League.' . $this->League->primaryKey => $id));
+		$this->set('league', $this->League->find('first', $options));
+	}
+
 
 /**
  * add method

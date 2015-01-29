@@ -172,4 +172,253 @@ class TeamsController extends AppController {
 	}
 
 
+/**
+ * view method
+ *
+ * @throws NotFoundException
+ * @param string $id
+ * @return void
+ */
+	public function news($id = null) {
+		$this->layout = 'boots';
+		if (!$this->Team->exists($id)) {
+			throw new NotFoundException(__('Invalid team'));
+		}
+		$articles = $this->Team->Article->find('all');
+		
+		$articleCount=count($articles);
+		$articleVarNames = array();
+		//$articleData;
+		//for ($i = 0; $i < $articleCount; $i++) {
+		//	$articleVarNames[$i+1] = $art
+		//}
+		//debug($articles);
+		$options = array('conditions' => array('Team.' . $this->Team->primaryKey => $id));
+		$this->set('team', $this->Team->find('first', $options));
+
+		$featuredId="54c77a87-5048-41aa-9895-d530c0aa087a";
+		$featuredArticle=$this->Team->Article->find('first', array(
+			'conditions' => array('Article.id' => $featuredId)
+		));
+		$farticle=$featuredArticle['Article'];
+		$ftitle=$farticle['title'];
+		$fid=$farticle['id'];
+		$flink=$farticle['link'];
+		$fdate=$farticle['created'];
+		$fdescription=$farticle['description'];
+		$fcreated=$farticle['created'];
+
+		$breadcrumbs = array('Manchester United', 'Real Madrid', 'Barcelona', 'Arsenal', 'Chelsea', 'Tottenham', 'Atletico Madrid');
+
+		//debug($farticle);
+		$this->Team->recursive = 0;
+		$this->set('articles', $articles);
+		//debug($articles);
+		$this->set(compact('ftitle', 'flink', 'fdate', 'fdescription', 'fid', 'breadcrumbs', 'articleCount', 'fcreated'));
+
+
+
+	}
+
+
+/**
+ * view method
+ *
+ * @throws NotFoundException
+ * @param string $id
+ * @return void
+ */
+	public function stats($id = null) {
+		$this->layout = 'boots';
+		if (!$this->Team->exists($id)) {
+			throw new NotFoundException(__('Invalid team'));
+		}
+		$articles = $this->Team->Article->find('all');
+		
+		$articleCount=count($articles);
+		$articleVarNames = array();
+		//$articleData;
+		//for ($i = 0; $i < $articleCount; $i++) {
+		//	$articleVarNames[$i+1] = $art
+		//}
+		//debug($articles);
+		$options = array('conditions' => array('Team.' . $this->Team->primaryKey => $id));
+		$this->set('team', $this->Team->find('first', $options));
+
+		$featuredId="54c77a87-5048-41aa-9895-d530c0aa087a";
+		$featuredArticle=$this->Team->Article->find('first', array(
+			'conditions' => array('Article.id' => $featuredId)
+		));
+		$farticle=$featuredArticle['Article'];
+		$ftitle=$farticle['title'];
+		$fid=$farticle['id'];
+		$flink=$farticle['link'];
+		$fdate=$farticle['created'];
+		$fdescription=$farticle['description'];
+		$fcreated=$farticle['created'];
+
+		$breadcrumbs = array('Manchester United', 'Real Madrid', 'Barcelona', 'Arsenal', 'Chelsea', 'Tottenham', 'Atletico Madrid');
+
+		//debug($farticle);
+		$this->Team->recursive = 0;
+		$this->set('articles', $articles);
+		//debug($articles);
+		$this->set(compact('ftitle', 'flink', 'fdate', 'fdescription', 'fid', 'breadcrumbs', 'articleCount', 'fcreated'));
+
+
+
+	}
+
+/**
+ * view method
+ *
+ * @throws NotFoundException
+ * @param string $id
+ * @return void
+ */
+	public function fantasy($id = null) {
+		$this->layout = 'boots';
+		if (!$this->Team->exists($id)) {
+			throw new NotFoundException(__('Invalid team'));
+		}
+		$articles = $this->Team->Article->find('all');
+		
+		$articleCount=count($articles);
+		$articleVarNames = array();
+		//$articleData;
+		//for ($i = 0; $i < $articleCount; $i++) {
+		//	$articleVarNames[$i+1] = $art
+		//}
+		//debug($articles);
+		$options = array('conditions' => array('Team.' . $this->Team->primaryKey => $id));
+		$this->set('team', $this->Team->find('first', $options));
+
+		$featuredId="54c77a87-5048-41aa-9895-d530c0aa087a";
+		$featuredArticle=$this->Team->Article->find('first', array(
+			'conditions' => array('Article.id' => $featuredId)
+		));
+		$farticle=$featuredArticle['Article'];
+		$ftitle=$farticle['title'];
+		$fid=$farticle['id'];
+		$flink=$farticle['link'];
+		$fdate=$farticle['created'];
+		$fdescription=$farticle['description'];
+		$fcreated=$farticle['created'];
+
+		$breadcrumbs = array('Manchester United', 'Real Madrid', 'Barcelona', 'Arsenal', 'Chelsea', 'Tottenham', 'Atletico Madrid');
+
+		//debug($farticle);
+		$this->Team->recursive = 0;
+		$this->set('articles', $articles);
+		//debug($articles);
+		$this->set(compact('ftitle', 'flink', 'fdate', 'fdescription', 'fid', 'breadcrumbs', 'articleCount', 'fcreated'));
+
+
+
+	}
+
+
+/**
+ * view method
+ *
+ * @throws NotFoundException
+ * @param string $id
+ * @return void
+ */
+	public function blog($id = null) {
+		$this->layout = 'boots';
+		if (!$this->Team->exists($id)) {
+			throw new NotFoundException(__('Invalid team'));
+		}
+		$articles = $this->Team->Article->find('all');
+		
+		$articleCount=count($articles);
+		$articleVarNames = array();
+		//$articleData;
+		//for ($i = 0; $i < $articleCount; $i++) {
+		//	$articleVarNames[$i+1] = $art
+		//}
+		//debug($articles);
+		$options = array('conditions' => array('Team.' . $this->Team->primaryKey => $id));
+		$this->set('team', $this->Team->find('first', $options));
+
+		$featuredId="54c77a87-5048-41aa-9895-d530c0aa087a";
+		$featuredArticle=$this->Team->Article->find('first', array(
+			'conditions' => array('Article.id' => $featuredId)
+		));
+		$farticle=$featuredArticle['Article'];
+		$ftitle=$farticle['title'];
+		$fid=$farticle['id'];
+		$flink=$farticle['link'];
+		$fdate=$farticle['created'];
+		$fdescription=$farticle['description'];
+		$fcreated=$farticle['created'];
+
+		$breadcrumbs = array('Manchester United', 'Real Madrid', 'Barcelona', 'Arsenal', 'Chelsea', 'Tottenham', 'Atletico Madrid');
+
+		//debug($farticle);
+		$this->Team->recursive = 0;
+		$this->set('articles', $articles);
+		//debug($articles);
+		$this->set(compact('ftitle', 'flink', 'fdate', 'fdescription', 'fid', 'breadcrumbs', 'articleCount', 'fcreated'));
+
+
+
+	}
+
+
+/**
+ * view method
+ *
+ * @throws NotFoundException
+ * @param string $id
+ * @return void
+ */
+	public function socialmedia($id = null) {
+		$this->layout = 'boots';
+		if (!$this->Team->exists($id)) {
+			throw new NotFoundException(__('Invalid team'));
+		}
+		$articles = $this->Team->Article->find('all');
+		
+		$articleCount=count($articles);
+		$articleVarNames = array();
+		//$articleData;
+		//for ($i = 0; $i < $articleCount; $i++) {
+		//	$articleVarNames[$i+1] = $art
+		//}
+		//debug($articles);
+		$options = array('conditions' => array('Team.' . $this->Team->primaryKey => $id));
+		$this->set('team', $this->Team->find('first', $options));
+
+		$featuredId="54c77a87-5048-41aa-9895-d530c0aa087a";
+		$featuredArticle=$this->Team->Article->find('first', array(
+			'conditions' => array('Article.id' => $featuredId)
+		));
+		$farticle=$featuredArticle['Article'];
+		$ftitle=$farticle['title'];
+		$fid=$farticle['id'];
+		$flink=$farticle['link'];
+		$fdate=$farticle['created'];
+		$fdescription=$farticle['description'];
+		$fcreated=$farticle['created'];
+
+		$breadcrumbs = array('Manchester United', 'Real Madrid', 'Barcelona', 'Arsenal', 'Chelsea', 'Tottenham', 'Atletico Madrid');
+
+		//debug($farticle);
+		$this->Team->recursive = 0;
+		$this->set('articles', $articles);
+		//debug($articles);
+		$this->set(compact('ftitle', 'flink', 'fdate', 'fdescription', 'fid', 'breadcrumbs', 'articleCount', 'fcreated'));
+
+
+
+	}
+
+
+
+
+
+
+
 }

@@ -126,22 +126,20 @@ echo $fstory; ?>
 	</ul>
 </div>
 <div class="related">
-	<h3><?php echo __('Related Comments'); ?></h3>
+	<h3><?php echo __('Comments'); ?></h3>
 	<?php if (!empty($article['Comment'])): ?>
-	<table cellpadding = "0" cellspacing = "0">
-	<tr>
-		<th><?php echo __('Id'); ?></th>
-		<th><?php echo __('User Id'); ?></th>
-		<th><?php echo __('Article Id'); ?></th>
-		<th><?php echo __('Comment'); ?></th>
-		<th class="actions"><?php echo __('Actions'); ?></th>
-	</tr>
+	<table cellpadding = "0" cellspacing = "0" class="table table-hover">
 	<?php foreach ($article['Comment'] as $comment): ?>
 		<tr>
+			<td><p id="comment"><?php echo $comment['comment']; ?><p><br>
+
 			<td><?php echo $comment['id']; ?></td>
 			<td><?php echo $comment['user_id']; ?></td>
 			<td><?php echo $comment['article_id']; ?></td>
-			<td><?php echo $comment['comment']; ?></td>
+
+
+
+</td>
 			<td class="actions">
 				<?php echo $this->Html->link(__('View'), array('controller' => 'comments', 'action' => 'view', $comment['id'])); ?>
 				<?php echo $this->Html->link(__('Edit'), array('controller' => 'comments', 'action' => 'edit', $comment['id'])); ?>
