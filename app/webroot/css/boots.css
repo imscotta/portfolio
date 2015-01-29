@@ -9,7 +9,8 @@ img {
         width: 100% !important;
 }
 
-#teamviewheader {
+#teamviewheader h1{
+	//text-decoration: underline !important;
 	//outline-color: black !important;
 	//outline-style: solid !important;
 	//outline-width: thin !important;

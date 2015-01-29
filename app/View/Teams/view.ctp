@@ -5,6 +5,17 @@
 </div>
 <div class="row" id="teamviewheader">
   <div class="col-md-12">
+
+    <ul class="nav nav-tabs nav-justified">
+      <li><a href="#" class="active">Home</a></li>
+      <li><a href="#">News</a></li>
+      <li><a href="#">Stats</a></li>
+      <li><a href="#">Fantasy</a></li>
+      <li><a href="#">Blog</a></li>
+      <li><a href="#">Social Media</a></li>
+    </ul>
+
+<!--
 Insert team tool bar with options:
 
 Team News: opens list of articles
@@ -12,6 +23,26 @@ Team Stats: opens list of team stats
 Fantasy: opens list of players fantasy stats
 Blog: Blog on team, recent updates
 Social media: Show latest videos or posts from teams or players
+!-->
+</div>
+</div>
+
+<div class="row" id="teamviewheader">
+  <div class="col-md-12">
+<div class="jumbotron">
+<table>
+<tr><td colspan="2">
+<b>Top Story:</b>
+<p><font size="36px"><b><?php echo $this->Html->link(__($ftitle), array('controller' => 'articles', 'action' => 'view', $fid)); ?></b></font></p>
+<p> <?php echo $fdescription; ?></p>
+  <p><a class="btn btn-primary btn-lg" href="#" role="button">Read more</a></p>
+</td>
+<td>
+<?php //echo $this->Html->image('fellaini.jpg', array('alt' => 'CakePHP', 'class'=>'img-responsive img-rounded')); ?>
+</td>
+</tr>
+</table>
+</div>
 </div>
 </div>
 <div class="row">
@@ -105,20 +136,17 @@ Different filters at tob of column:
 </div>
   <div class="col-md-8">
 <div class="articles index">
-<b>Top Story:</b>
-<p><font size="36px"><b><?php echo $this->Html->link(__($ftitle), array('controller' => 'articles', 'action' => 'view', $fid)); ?></b></font></p>
-<div class="panel panel-default">
-  <div class="panel-body">
-    <?php echo $fdescription; ?>
-  </div>
-</div>
 
 
 
 
+<p>
+Insert photo reel or selection of videos
+<br>
+<br>
 Sort articles by teams and players and hottest topic
-
-<p> Add shortcuts for filters to sort articles by banter, tekkers and news. Add more for players and teams. <br><br>his could possibly be  second navbar <br><br> Article view should include image, header, source, text description, comments, ratings, thumbs up and down <br><br>
+<br>
+<br> Add shortcuts for filters to sort articles by banter, tekkers and news. Add more for players and teams. <br><br>his could possibly be  second navbar <br><br> Article view should include image, header, source, text description, comments, ratings, thumbs up and down <br><br>
 
 Feature article is set by default, if user is logged in, can be different. Feature article data passed as array to view
 
@@ -134,7 +162,7 @@ Feature article is set by default, if user is logged in, can be different. Featu
 			<th><?php echo $this->Paginator->sort('title'); ?></th>
 			<th><?php echo $this->Paginator->sort('link'); ?></th>
 			<th><?php echo $this->Paginator->sort('rating'); ?></th>
-			<th><?php echo $this->Paginator->sort('date'); ?></th>
+			<th><?php echo $this->Paginator->sort('created'); ?></th>
 			<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
 	</thead>
@@ -145,7 +173,7 @@ Feature article is set by default, if user is logged in, can be different. Featu
 		<td><?php echo h($article['Article']['title']); ?>&nbsp;</td>
 		<td><?php echo h($article['Article']['link']); ?>&nbsp;</td>
 		<td><?php echo h($article['Article']['rating']); ?>&nbsp;</td>
-		<td><?php echo h($article['Article']['date']); ?>&nbsp;</td>
+		<td><?php echo h($article['Article']['created']); ?>&nbsp;</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $article['Article']['id'])); ?>
 			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $article['Article']['id'])); ?>

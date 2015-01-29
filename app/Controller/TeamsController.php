@@ -38,6 +38,7 @@ class TeamsController extends AppController {
 			throw new NotFoundException(__('Invalid team'));
 		}
 		$articles = $this->Team->Article->find('all');
+		
 		$articleCount=count($articles);
 		$articleVarNames = array();
 		//$articleData;
@@ -62,8 +63,8 @@ class TeamsController extends AppController {
 		$breadcrumbs = array('Manchester United', 'Real Madrid', 'Barcelona', 'Arsenal', 'Chelsea', 'Tottenham', 'Atletico Madrid');
 
 		//debug($farticle);
-		$this->Team->Article->recursive = 0;
-		$this->set('articles', $this->Paginator->paginate());
+		$this->Team->recursive = 0;
+		$this->set('articles', $articles);
 		//debug($articles);
 		$this->set(compact('ftitle', 'flink', 'fdate', 'fdescription', 'fid', 'breadcrumbs', 'articleCount'));
 
