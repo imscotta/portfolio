@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-md-12">
-<ol class="breadcrumb">
+<ol class="breadcrumb" id="articlecrumbs">
   <li>Related Topics</li>
   <li><?php echo $this->Html->link(__('Manchester United'), array('controller' => 'teams', 'action' => 'view', '54c1ce8a-6dd8-4025-9db1-8fb1c0aa087a')); ?></li>
 
@@ -11,11 +11,25 @@
 </ol>
 </div>
 </div>
+<div class="row">
+  <div class="col-md-2">
+</div>
+  <div class="col-md-8">
 
+<p id="articleviewheader"><b><?php echo $this->Html->link(__($ftitle), array('controller' => 'articles', 'action' => 'view', $fid)); ?></b></p>
+<p id="articleviewcreated"><i>Posted on <?php echo $fcreated; ?></i></p>
+</div>
+  <div class="col-md-2">
+
+</div>
+</div>
 
 <div class="row">
   <div class="col-md-2">
 
+<table id="ad">
+<tr><td>YOUR AD HERE</td></tr>
+</table>
 
 </div>
   <div class="col-md-8">
@@ -26,22 +40,13 @@
 </div>
   <div class="col-md-2">
 
-</div>
-</div>
+<table id="ad">
+<tr><td>YOUR AD HERE</td></tr>
+</table>
 
-<div class="row">
-  <div class="col-md-2">
-</div>
-  <div class="col-md-8">
-
-<p><font size="36px"><b><?php echo $this->Html->link(__($ftitle), array('controller' => 'articles', 'action' => 'view', $fid)); ?></b></font></p>
-
-</div>
-  <div class="col-md-2">
 
 </div>
 </div>
-
 
 <div class="row">
   <div class="col-md-2">
@@ -54,16 +59,20 @@ echo '<h4>';
 echo $fsource;
 echo '</h4></p><br><br>';
 ?>
+<p>Article link: </p>
 <i>
 <a href="<?php echo $flink; ?>"><?php echo $flink; ?></a>
 </i>
-<p>insert article stats</p>
+<p>Where to put insert article stats????</p>
 
 <?php
 echo $fdescription; ?>
 
 
-
+<p>
+<?php
+echo $fstory; ?>
+</p>
 
 <blockquote>
   <p><?php echo $fdescription; ?></p>
@@ -93,7 +102,7 @@ echo $fdescription; ?>
 		</dd>
 		<dt><?php echo __('Date'); ?></dt>
 		<dd>
-			<?php echo h($article['Article']['date']); ?>
+			<?php echo h($article['Article']['created']); ?>
 			&nbsp;
 		</dd>
 	</dl>
@@ -125,7 +134,6 @@ echo $fdescription; ?>
 		<th><?php echo __('User Id'); ?></th>
 		<th><?php echo __('Article Id'); ?></th>
 		<th><?php echo __('Comment'); ?></th>
-		<th><?php echo __('Ranking Id'); ?></th>
 		<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
 	<?php foreach ($article['Comment'] as $comment): ?>
@@ -134,7 +142,6 @@ echo $fdescription; ?>
 			<td><?php echo $comment['user_id']; ?></td>
 			<td><?php echo $comment['article_id']; ?></td>
 			<td><?php echo $comment['comment']; ?></td>
-			<td><?php echo $comment['ranking_id']; ?></td>
 			<td class="actions">
 				<?php echo $this->Html->link(__('View'), array('controller' => 'comments', 'action' => 'view', $comment['id'])); ?>
 				<?php echo $this->Html->link(__('Edit'), array('controller' => 'comments', 'action' => 'edit', $comment['id'])); ?>

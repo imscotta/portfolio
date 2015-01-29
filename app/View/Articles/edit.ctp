@@ -8,6 +8,7 @@
 		echo $this->Form->input('link');
 		echo $this->Form->input('rating');
 		echo $this->Form->input('date');
+		echo $this->Form->input('story');
 		echo $this->Form->input('Keyword');
 		echo $this->Form->input('Player');
 		echo $this->Form->input('Team');

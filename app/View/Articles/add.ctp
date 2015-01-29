@@ -9,6 +9,7 @@
 		echo $this->Form->input('rating');
 		echo $this->Form->input('image');
 		echo $this->Form->input('source');
+		echo $this->Form->input('story');
 		echo $this->Form->input('Keyword');
 		echo $this->Form->input('Player');
 		echo $this->Form->input('Team');

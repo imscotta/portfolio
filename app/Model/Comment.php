@@ -16,8 +16,8 @@ class Comment extends AppModel {
  */
 	public $validate = array(
 		'user_id' => array(
-			'numeric' => array(
-				'rule' => array('numeric'),
+			'uuid' => array(
+				'rule' => array('uuid'),
 				//'message' => 'Your custom message here',
 				//'allowEmpty' => false,
 				//'required' => false,
@@ -26,8 +26,8 @@ class Comment extends AppModel {
 			),
 		),
 		'article_id' => array(
-			'numeric' => array(
-				'rule' => array('numeric'),
+			'uuid' => array(
+				'rule' => array('uuid'),
 				//'message' => 'Your custom message here',
 				//'allowEmpty' => false,
 				//'required' => false,
@@ -36,18 +36,8 @@ class Comment extends AppModel {
 			),
 		),
 		'comment' => array(
-			'numeric' => array(
-				'rule' => array('numeric'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
-		'ranking_id' => array(
-			'uuid' => array(
-				'rule' => array('uuid'),
+			'notEmpty' => array(
+				'rule' => array('notEmpty'),
 				//'message' => 'Your custom message here',
 				//'allowEmpty' => false,
 				//'required' => false,
@@ -79,13 +69,6 @@ class Comment extends AppModel {
 			'fields' => '',
 			'order' => ''
 		),
-		'Ranking' => array(
-			'className' => 'Ranking',
-			'foreignKey' => 'ranking_id',
-			'conditions' => '',
-			'fields' => '',
-			'order' => ''
-		)
 	);
 
 

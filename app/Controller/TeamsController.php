@@ -59,6 +59,7 @@ class TeamsController extends AppController {
 		$flink=$farticle['link'];
 		$fdate=$farticle['created'];
 		$fdescription=$farticle['description'];
+		$fcreated=$farticle['created'];
 
 		$breadcrumbs = array('Manchester United', 'Real Madrid', 'Barcelona', 'Arsenal', 'Chelsea', 'Tottenham', 'Atletico Madrid');
 
@@ -66,7 +67,7 @@ class TeamsController extends AppController {
 		$this->Team->recursive = 0;
 		$this->set('articles', $articles);
 		//debug($articles);
-		$this->set(compact('ftitle', 'flink', 'fdate', 'fdescription', 'fid', 'breadcrumbs', 'articleCount'));
+		$this->set(compact('ftitle', 'flink', 'fdate', 'fdescription', 'fid', 'breadcrumbs', 'articleCount', 'fcreated'));
 
 
 

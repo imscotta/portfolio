@@ -1,3 +1,5 @@
+
+
 <div class="row" id="teamviewheader">
   <div class="col-md-12">
 	<h1><?php echo $team['Team']['name']; ?></h1></div>
@@ -5,8 +7,7 @@
 </div>
 <div class="row" id="teamviewheader">
   <div class="col-md-12">
-
-    <ul class="nav nav-tabs nav-justified">
+    <ul class="nav nav-tabs nav-justified  nav-fixed-top">
       <li><a href="#" class="active">Home</a></li>
       <li><a href="#">News</a></li>
       <li><a href="#">Stats</a></li>
@@ -14,7 +15,6 @@
       <li><a href="#">Blog</a></li>
       <li><a href="#">Social Media</a></li>
     </ul>
-
 <!--
 Insert team tool bar with options:
 
@@ -27,24 +27,6 @@ Social media: Show latest videos or posts from teams or players
 </div>
 </div>
 
-<div class="row" id="teamviewheader">
-  <div class="col-md-12">
-<div class="jumbotron">
-<table>
-<tr><td colspan="2">
-<b>Top Story:</b>
-<p><font size="36px"><b><?php echo $this->Html->link(__($ftitle), array('controller' => 'articles', 'action' => 'view', $fid)); ?></b></font></p>
-<p> <?php echo $fdescription; ?></p>
-  <p><a class="btn btn-primary btn-lg" href="#" role="button">Read more</a></p>
-</td>
-<td>
-<?php //echo $this->Html->image('fellaini.jpg', array('alt' => 'CakePHP', 'class'=>'img-responsive img-rounded')); ?>
-</td>
-</tr>
-</table>
-</div>
-</div>
-</div>
 <div class="row">
   <div class="col-md-4">
 <?php //debug($ftitle); ?>

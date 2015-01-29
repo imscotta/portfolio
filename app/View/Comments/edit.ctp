@@ -7,7 +7,6 @@
 		echo $this->Form->input('user_id');
 		echo $this->Form->input('article_id');
 		echo $this->Form->input('comment');
-		echo $this->Form->input('ranking_id');
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>

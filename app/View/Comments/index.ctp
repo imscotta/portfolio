@@ -7,7 +7,6 @@
 			<th><?php echo $this->Paginator->sort('user_id'); ?></th>
 			<th><?php echo $this->Paginator->sort('article_id'); ?></th>
 			<th><?php echo $this->Paginator->sort('comment'); ?></th>
-			<th><?php echo $this->Paginator->sort('ranking_id'); ?></th>
 			<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
 	</thead>
@@ -22,10 +21,7 @@
 			<?php echo $this->Html->link($comment['Article']['title'], array('controller' => 'articles', 'action' => 'view', $comment['Article']['id'])); ?>
 		</td>
 		<td><?php echo h($comment['Comment']['comment']); ?>&nbsp;</td>
-		<td>
-			<?php echo $this->Html->link($comment['Ranking']['id'], array('controller' => 'rankings', 'action' => 'view', $comment['Ranking']['id'])); ?>
-		</td>
-		<td class="actions">
+			<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $comment['Comment']['id'])); ?>
 			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $comment['Comment']['id'])); ?>
 			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $comment['Comment']['id']), array(), __('Are you sure you want to delete # %s?', $comment['Comment']['id'])); ?>

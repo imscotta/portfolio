@@ -89,8 +89,12 @@ class ArticlesController extends AppController {
 		$fdate=$farticle['created'];
 		$fdescription=$farticle['description'];
 		$fsource=$farticle['source'];
-		//debug($flink);
-		$this->set(compact('ftitle', 'flink', 'fdate', 'fdescription', 'fid', 'breadcrumbs', 'fsource'));
+		$fcreated=$farticle['created'];
+		$fstory=$farticle['story'];
+
+		//fix bread crumbs to match corresponding keywords, and teams and players
+		$breadcrumbs = array('Real Madrid', 'Barcelona', 'Arsenal', 'Chelsea', 'Tottenham', 'Atletico Madrid');
+		$this->set(compact('ftitle', 'flink', 'fdate', 'fdescription', 'fid', 'breadcrumbs', 'fsource', 'fcreated', 'fstory'));
 		$this->set('article', $this->Article->find('first', $options));
 	}
 

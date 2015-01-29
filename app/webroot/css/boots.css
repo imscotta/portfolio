@@ -16,5 +16,37 @@ img {
 	//outline-width: thin !important;
 	//text-align: center !important;
 	//width: 100% !important;
+	//visibility: hidden !important;
+	//display: none; !important;
 }
 
+#ad {
+	border:1px !important;	
+	text-align: center !important;
+	//horizontal-align: 
+	//margin-left: auto !important;
+    	margin-right: auto !important;
+	vertical-align: middle !important;
+}
+
+#articleviewheader {
+
+	font-size: 36px !important;
+
+}
+
+#articleviewcreated {
+
+	font-size: 8px !important;
+
+}
+
+
+#teamviewsubnav {
+	margin-top: 200px;
+}
+
+
+#articlecrumbs {
+	text-align: center !important;
+}
