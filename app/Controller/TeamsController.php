@@ -1,5 +1,9 @@
 <?php
 App::uses('AppController', 'Controller');
+App::uses('ArticlesController', 'Controller');
+App::uses('PlayersController', 'Controller');
+App::uses('ArticlesController', 'Controller');
+
 /**
  * Teams Controller
  *

@@ -77,5 +77,23 @@ class League extends AppModel {
 			'counterQuery' => ''
 		)
 	);
+	
+	
+	public $hasAndBelongsToMany = array(
+		'Article' => array(
+			'className' => 'Article',
+			'joinTable' => 'articles_leagues',
+			'foreignKey' => 'league_id',
+			'associationForeignKey' => 'article_id',
+			'unique' => 'keepExisting',
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'finderQuery' => '',
+		)
+	);
+	
 
 }

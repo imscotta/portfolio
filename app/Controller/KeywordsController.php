@@ -1,5 +1,8 @@
 <?php
 App::uses('AppController', 'Controller');
+//App::uses('ArticlesController', 'Controller');
+//App::uses('TeamsController', 'Controller');
+
 /**
  * Keywords Controller
  *
@@ -38,6 +41,21 @@ class KeywordsController extends AppController {
 			throw new NotFoundException(__('Invalid keyword'));
 		}
 		$options = array('conditions' => array('Keyword.' . $this->Keyword->primaryKey => $id));
+
+		$featuredId="54c77a87-5048-41aa-9895-d530c0aa087a";
+		$this->loadModel('Article');
+		$featuredArticle=$this->Keyword->Article->find('first', array(
+			'conditions' => array('Article.id' => $featuredId)
+		));
+		$farticle=$featuredArticle['Article'];
+		$ftitle=$farticle['title'];
+		$fid=$farticle['id'];
+		$flink=$farticle['link'];
+		$fdate=$farticle['created'];
+		$fdescription=$farticle['description'];
+		$fcreated=$farticle['created'];
+		$this->set(compact('ftitle', 'flink', 'fdate', 'fdescription', 'fid', 'breadcrumbs', 'articleCount', 'fcreated'));
+
 		$this->set('keyword', $this->Keyword->find('first', $options));
 	}
 

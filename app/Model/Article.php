@@ -136,6 +136,19 @@ class Article extends AppModel {
 			'limit' => '',
 			'offset' => '',
 			'finderQuery' => '',
+		),
+		'league' => array(
+			'className' => 'Team',
+			'joinTable' => 'articles_leagues',
+			'foreignKey' => 'article_id',
+			'associationForeignKey' => 'league_id',
+			'unique' => 'keepExisting',
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'finderQuery' => '',
 		)
 	);
 

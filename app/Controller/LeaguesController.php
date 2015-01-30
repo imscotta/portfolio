@@ -1,5 +1,11 @@
 <?php
 App::uses('AppController', 'Controller');
+/*App::uses('TeamsController', 'Controller');
+App::uses('PlayersController', 'Controller');
+App::uses('ArticlesController', 'Controller');
+App::uses('UsersController', 'Controller'); */
+
+
 /**
  * Leagues Controller
  *
@@ -43,9 +49,27 @@ class LeaguesController extends AppController {
 		if (!$this->League->exists($id)) {
 			throw new NotFoundException(__('Invalid league'));
 		}
-		$relatedArticles=$this->League->Team->Article->find('all');
-		debug($relatedArticles);
+		$this->loadModel('Article');
+		$relatedArticles=$this->Article->find('all');
+		//debug($relatedArticles);
 		$options = array('conditions' => array('League.' . $this->League->primaryKey => $id));
+
+		$featuredId="54c77a87-5048-41aa-9895-d530c0aa087a";
+		$featuredArticle=$this->Article->find('first', array(
+			'conditions' => array('Article.id' => $featuredId)
+		));
+		$farticle=$featuredArticle['Article'];
+		$ftitle=$farticle['title'];
+		$fid=$farticle['id'];
+		$flink=$farticle['link'];
+		$fdate=$farticle['created'];
+		$fdescription=$farticle['description'];
+		$fcreated=$farticle['created'];
+		$fsource=$farticle['source'];
+		$this->set(compact('ftitle', 'flink', 'fdate', 'fdescription', 'fid', 'breadcrumbs', 'articleCount', 'fcreated', 'fsource'));
+
+
+		$this->set('articles', $this->Article->find('all'));		
 		$this->set('league', $this->League->find('first', $options));
 	}
 

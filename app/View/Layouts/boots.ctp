@@ -40,10 +40,8 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 
 <!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
 </head>
 <body>
@@ -68,6 +66,18 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
         <li><?php echo $this->Html->link(__('News'), array('controller' => 'articles', 'action' => 'index')); ?></li>
   	<li><a href="#"><span class="glyphicon glyphicon-stats" aria-hidden="true"></span> Stats</a></li>
   	<li><a href="#"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Fantasy</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Leagues<span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><?php echo $this->Html->link(__('Premier League'), array('controller' => 'leagues', 'action' => 'view', '54c1cdc3-f864-48b0-92ce-8f9cc0aa087a')); ?></li>
+            <li><a href="#">Another action</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+
+          </ul>
+        </li>
+
       </ul>
       <form class="navbar-form navbar-left" role="search">
         <div class="form-group">
@@ -75,6 +85,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
         </div>
         <button type="submit" class="btn btn-default">Submit</button>
       </form>
+
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Favorites<span class="caret"></span></a>
