@@ -98,7 +98,22 @@ foreach ($articles as $article): ?>
 </div>
   <div class="col-md-8">
 <div class="articles index">
+<div class="panel panel-default">
+  <div class="panel-heading"><b>Top Story</b></div>
+  <div class="panel-body">
+<p><font size="36px"><b><?php echo $this->Html->link(__($ftitle), array('controller' => 'articles', 'action' => 'view', $fid)); ?></b></font></p>
+<?php echo $this->Html->image('fellaini.jpg', array('alt' => 'CakePHP', 'class'=>'img-responsive img-rounded')); ?>
 
+<blockquote>
+  <p><?php echo $fdescription; ?></p>
+  <footer><?php echo('Source: ' . $fsource . '<br><br>'); ?></footer>
+</blockquote>
+    <?php 
+//echo $this->Html->link('Link', $flink);
+echo('<br>Posted By: Admin');
+
+?>
+  </div>
 
 
 

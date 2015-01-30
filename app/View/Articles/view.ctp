@@ -1,5 +1,6 @@
 <div class="row">
   <div class="col-md-12">
+<?php debug($keyworddata); ?>
 <ol class="breadcrumb" id="articlecrumbs">
   <li>Related Topics</li>
   <li><?php echo $this->Html->link(__('Manchester United'), array('controller' => 'teams', 'action' => 'view', '54c1ce8a-6dd8-4025-9db1-8fb1c0aa087a')); ?></li>

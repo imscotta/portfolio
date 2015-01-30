@@ -33,6 +33,16 @@ class KeywordsController extends AppController {
  * @return void
  */
 	public function view($id = null) {
+		$this->layout = 'boots';
+		if (!$this->Keyword->exists($id)) {
+			throw new NotFoundException(__('Invalid keyword'));
+		}
+		$options = array('conditions' => array('Keyword.' . $this->Keyword->primaryKey => $id));
+		$this->set('keyword', $this->Keyword->find('first', $options));
+	}
+
+	public function viewbackup($id = null) {
+		$this->layout = 'boots';
 		if (!$this->Keyword->exists($id)) {
 			throw new NotFoundException(__('Invalid keyword'));
 		}

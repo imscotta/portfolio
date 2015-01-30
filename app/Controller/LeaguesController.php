@@ -117,4 +117,16 @@ class LeaguesController extends AppController {
 		}
 		return $this->redirect(array('action' => 'index'));
 	}
+
+	public function teams($id = null) {
+		$this->layout = 'boots';
+		if (!$this->League->exists($id)) {
+			throw new NotFoundException(__('Invalid league'));
+		}
+		$options = array('conditions' => array('League.' . $this->League->primaryKey => $id));
+		$this->set('league', $this->League->find('first', $options));
+	}
+
+
+
 }

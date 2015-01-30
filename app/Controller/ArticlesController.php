@@ -92,10 +92,38 @@ class ArticlesController extends AppController {
 		$fcreated=$farticle['created'];
 		$fstory=$farticle['story'];
 
+		$articleData = $this->Article->find('first', $options);
+		//want array where entries are (type (ie keyword, player, team), id, and name)
+		$relatedKeyword = array();
+		$counter = 0;
+		foreach($articleData['Keyword'] as $keyword) {
+			$relatedKeyword[$counter]['type']= 'keyword';
+			$relatedKeyword[$counter]['id']= $keyword['id'];
+			$relatedKeyword[$counter]['name']= $keyword['keyword'];
+			$counter = $counter +1;
+		}
+
+		foreach($articleData['Player'] as $keyword) {
+			$relatedKeyword[$counter]['type']= 'player';
+			$relatedKeyword[$counter]['id']= $keyword['id'];
+			$relatedKeyword[$counter]['name']= ($keyword['first_name'] . ' ' . $keyword['first_name']);
+			$counter = $counter +1;
+
+		}
+
+		foreach($articleData['Team'] as $keyword) {
+			$relatedKeyword[$counter]['type']= 'team';
+			$relatedKeyword[$counter]['id']= $keyword['id'];
+			$relatedKeyword[$counter]['name']= $keyword['name'];
+			$counter = $counter +1;
+
+		}
+
 		//fix bread crumbs to match corresponding keywords, and teams and players
 		$breadcrumbs = array('Real Madrid', 'Barcelona', 'Arsenal', 'Chelsea', 'Tottenham', 'Atletico Madrid');
-		$this->set(compact('ftitle', 'flink', 'fdate', 'fdescription', 'fid', 'breadcrumbs', 'fsource', 'fcreated', 'fstory'));
+		$this->set(compact('ftitle', 'flink', 'fdate', 'fdescription', 'fid', 'breadcrumbs', 'fsource', 'fcreated', 'fstory', 'counter'));
 		$this->set('article', $this->Article->find('first', $options));
+		$this->set('keyworddata', $relatedKeyword);
 	}
 
 /**
