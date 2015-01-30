@@ -99,6 +99,7 @@ foreach ($keyword['Article'] as $article): ?>
 		</ul>
 	</div>
 </div>
+</div>
    <div class="col-md-8">
 
 <div class="panel panel-default">
@@ -117,6 +118,7 @@ echo('<br>Posted By: Admin');
 
 ?>
   </div>
+
 
 </div>
 </div>

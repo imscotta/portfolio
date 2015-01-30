@@ -43,6 +43,8 @@ class LeaguesController extends AppController {
 		if (!$this->League->exists($id)) {
 			throw new NotFoundException(__('Invalid league'));
 		}
+		$relatedArticles=$this->League->Team->Article->find('all');
+		debug($relatedArticles);
 		$options = array('conditions' => array('League.' . $this->League->primaryKey => $id));
 		$this->set('league', $this->League->find('first', $options));
 	}
