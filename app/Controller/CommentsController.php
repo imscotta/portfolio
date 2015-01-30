@@ -42,10 +42,34 @@ public function isAuthorized($user) {
  *
  * @return void
  */
+ 
+ /**
+ * index method
+ *
+ * @return void
+ */
 	public function index() {
+		$this->layout = 'boots';
+		$currentId=$this->Auth->user('id');
+		$currentRole=$this->Auth->user('role');
+		$this->set(compact('currentId', 'currentRole'));
+
+		//debug($authinfo);
+		//$desiredAuth=$authinfo
 		$this->Comment->recursive = 0;
 		$this->set('comments', $this->Paginator->paginate());
 	}
+
+ 
+ 
+ 
+ 
+	public function indexbackup() {
+		$this->Comment->recursive = 0;
+		$this->set('comments', $this->Paginator->paginate());
+	}
+
+
 
 /**
  * view method

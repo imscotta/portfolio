@@ -52,8 +52,11 @@ img {
 }
 
 #comment {
-	font-size: 12px;
-	
+	font-size: 15px;
+	outline-color: black !important;
+	outline-style: solid !important;
+	outline-width: thin !important;
+
 }
 
 
@@ -63,3 +66,30 @@ img {
 	//outline-width: thin !important;
 
 }
+
+
+#forumcommenttext {
+
+	font-size: 18px !important;
+
+}
+
+#forumcommentdate {
+
+	font-size: 6px !important;
+	font-style: italic !important;
+
+}
+#forumcommentusername {
+
+	font-size: 10px !important;
+	//font-style:  !important;
+
+}
+
+#forumcommentactions {
+
+	text-align: right !important;
+
+}
+

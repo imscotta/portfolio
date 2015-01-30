@@ -11,7 +11,7 @@ App::uses('BlowfishPasswordHasher', 'Controller/Component/Auth');
  */
 class User extends AppModel {
 
-	public $displayField = 'username';
+	var $displayField = 'username';
 
 /**
  * Validation rules
