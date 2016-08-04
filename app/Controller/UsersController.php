@@ -16,15 +16,13 @@ class UsersController extends AppController {
 	public $components = array('Paginator');
 
 
-/**
-* BeforeFilter
-*
- */
+
+
 
 public function beforeFilter() {
     parent::beforeFilter();
     // Allow users to register and logout.
-    $this->Auth->allow('add', 'logout');
+    $this->Auth->allow('add', 'logout', 'edit', 'delete');
 }
 
 public function login() {
@@ -39,6 +37,9 @@ public function login() {
 public function logout() {
     return $this->redirect($this->Auth->logout());
 }
+
+
+
 /**
  * index method
  *
@@ -79,10 +80,6 @@ public function logout() {
 				$this->Session->setFlash(__('The user could not be saved. Please, try again.'));
 			}
 		}
-		$teams = $this->User->Team->find('list');
-		$players = $this->User->Player->find('list');
-		$teams = $this->User->Team->find('list');
-		$this->set(compact('teams', 'players', 'teams'));
 	}
 
 /**
@@ -107,10 +104,6 @@ public function logout() {
 			$options = array('conditions' => array('User.' . $this->User->primaryKey => $id));
 			$this->request->data = $this->User->find('first', $options);
 		}
-		$teams = $this->User->Team->find('list');
-		$players = $this->User->Player->find('list');
-		$teams = $this->User->Team->find('list');
-		$this->set(compact('teams', 'players', 'teams'));
 	}
 
 /**
@@ -133,4 +126,9 @@ public function logout() {
 		}
 		return $this->redirect(array('action' => 'index'));
 	}
+	
+	
+	
+	
+	
 }

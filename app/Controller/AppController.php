@@ -36,24 +36,40 @@ class AppController extends Controller {
 		'DebugKit.Toolbar',
 	    'Session',
 	    'Auth' => array(
-	    'authenticate' => array(
+			'flash' => array(
+				'element' => 'alert',
+				'key' => 'auth',
+				'params' => array(
+					'plugin' => 'BoostCake',
+					'class' => 'alert-error'
+				)
+			),
+	   /* 'authenticate' => array(
                 'Form' => array(
                     'passwordHasher' => 'Blowfish'
                 )
-            ),
-		'loginRedirect' => array('controller' => 'users', 'action' => 'add'),
-		'logoutRedirect' => array(
+            ), */
+		//'loginRedirect' => array('controller' => 'skills', 'action' => 'index'),
+		/*'logoutRedirect' => array(
 		    'controller' => 'pages',
 		    'action' => 'display',
 		    'home'
-		),
-		'authenticate' => array(
+		), */
+		/*'authenticate' => array(
 		    'Form' => array(
 			'passwordHasher' => 'Blowfish'
 		    )
-		),
-		'authorize' => array('Controller') // Added this line
+		), */
+		//'authorize' => array('Controller') // Added this line
 	    )
+	);
+
+
+	public $helpers = array(
+		'Session',
+		'Html' => array('className' => 'BoostCake.BoostCakeHtml'),
+		'Form' => array('className' => 'BoostCake.BoostCakeForm'),
+		'Paginator' => array('className' => 'BoostCake.BoostCakePaginator'),
 	);
 
 	public function isAuthorized($user) {
@@ -63,7 +79,7 @@ class AppController extends Controller {
 	}
 
 	    public function beforeFilter() {
-		$this->Auth->allow('index', 'view');
+		$this->Auth->allow('index', 'view', 'display', 'home', 'edit');
 	    }
 
 

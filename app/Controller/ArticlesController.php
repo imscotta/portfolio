@@ -1,6 +1,5 @@
 <?php
 App::uses('AppController', 'Controller');
-
 /**
  * Articles Controller
  *
@@ -16,27 +15,11 @@ class ArticlesController extends AppController {
  */
 	public $components = array('Paginator');
 
-
-
-
-
-	public function isAuthorized($user) {
-	    // All registered users can add posts
-	    if ($this->action === 'add') {
-		return true;
-	    }
-
-	    // The owner of a post can edit and delete it
-	    if (in_array($this->action, array('edit', 'delete'))) {
-		$postId = (int) $this->request->params['pass'][0];
-		if ($this->Article->isOwnedBy($postId, $user['id'])) {
-		    return true;
-		}
-	    }
-
-	    return parent::isAuthorized($user);
-	}
-
+public function beforeFilter() {
+    parent::beforeFilter();
+    // Allow users to register and logout.
+    $this->Auth->allow('add', 'index', 'delete', 'view');
+}
 
 /**
  * index method
@@ -44,27 +27,8 @@ class ArticlesController extends AppController {
  * @return void
  */
 	public function index() {
-		$this->layout = 'boots';
-		$featuredId="54c77a87-5048-41aa-9895-d530c0aa087a";
-		$featuredArticle=$this->Article->find('first', array(
-			'conditions' => array('Article.id' => $featuredId)
-		));
-		$farticle=$featuredArticle['Article'];
-		$ftitle=$farticle['title'];
-		$fid=$farticle['id'];
-		$flink=$farticle['link'];
-		$fdate=$farticle['created'];
-		$fdescription=$farticle['description'];
-		$fsource=$farticle['source'];
-
-		$breadcrumbs = array('Real Madrid', 'Barcelona', 'Arsenal', 'Chelsea', 'Tottenham', 'Atletico Madrid');
-
-
-
-		//debug($farticle);
 		$this->Article->recursive = 0;
-		$this->set('articles', $this->Paginator->paginate(), 'ftitle', 'flink', 'fdate');
-		$this->set(compact('ftitle', 'flink', 'fdate', 'fdescription', 'fid', 'breadcrumbs', 'fsource'));
+		$this->set('articles', $this->Paginator->paginate());
 	}
 
 /**
@@ -75,56 +39,11 @@ class ArticlesController extends AppController {
  * @return void
  */
 	public function view($id = null) {
-		$this->layout = 'boots';
 		if (!$this->Article->exists($id)) {
 			throw new NotFoundException(__('Invalid article'));
 		}
 		$options = array('conditions' => array('Article.' . $this->Article->primaryKey => $id));
-		$featuredArticle=$this->Article->find('first', array(
-			'conditions' => array('Article.id' => $id)
-		));
-		$farticle=$featuredArticle['Article'];
-		$ftitle=$farticle['title'];
-		$fid=$farticle['id'];
-		$flink=$farticle['link'];
-		$fdate=$farticle['created'];
-		$fdescription=$farticle['description'];
-		$fsource=$farticle['source'];
-		$fcreated=$farticle['created'];
-		$fstory=$farticle['story'];
-
-		$articleData = $this->Article->find('first', $options);
-		//want array where entries are (type (ie keyword, player, team), id, and name)
-		$relatedKeyword = array();
-		$counter = 0;
-		foreach($articleData['Keyword'] as $keyword) {
-			$relatedKeyword[$counter]['type']= 'keyword';
-			$relatedKeyword[$counter]['id']= $keyword['id'];
-			$relatedKeyword[$counter]['name']= $keyword['keyword'];
-			$counter = $counter +1;
-		}
-
-		foreach($articleData['Player'] as $keyword) {
-			$relatedKeyword[$counter]['type']= 'player';
-			$relatedKeyword[$counter]['id']= $keyword['id'];
-			$relatedKeyword[$counter]['name']= ($keyword['first_name'] . ' ' . $keyword['first_name']);
-			$counter = $counter +1;
-
-		}
-
-		foreach($articleData['Team'] as $keyword) {
-			$relatedKeyword[$counter]['type']= 'team';
-			$relatedKeyword[$counter]['id']= $keyword['id'];
-			$relatedKeyword[$counter]['name']= $keyword['name'];
-			$counter = $counter +1;
-
-		}
-
-		//fix bread crumbs to match corresponding keywords, and teams and players
-		$breadcrumbs = array('Real Madrid', 'Barcelona', 'Arsenal', 'Chelsea', 'Tottenham', 'Atletico Madrid');
-		$this->set(compact('ftitle', 'flink', 'fdate', 'fdescription', 'fid', 'breadcrumbs', 'fsource', 'fcreated', 'fstory', 'counter'));
 		$this->set('article', $this->Article->find('first', $options));
-		$this->set('keyworddata', $relatedKeyword);
 	}
 
 /**
@@ -134,7 +53,6 @@ class ArticlesController extends AppController {
  */
 	public function add() {
 		if ($this->request->is('post')) {
-			$this->request->data['Article']['user_id'] = $this->Auth->user('id');
 			$this->Article->create();
 			if ($this->Article->save($this->request->data)) {
 				$this->Session->setFlash(__('The article has been saved.'));
@@ -143,10 +61,9 @@ class ArticlesController extends AppController {
 				$this->Session->setFlash(__('The article could not be saved. Please, try again.'));
 			}
 		}
-		$keywords = $this->Article->Keyword->find('list');
-		$players = $this->Article->Player->find('list');
-		$teams = $this->Article->Team->find('list');
-		$this->set(compact('keywords', 'players', 'teams'));
+		$projects = $this->Article->Project->find('list');
+		//$skills = $this->Article->Skill->find('list');
+		$this->set(compact('projects'));
 	}
 
 /**
@@ -171,10 +88,9 @@ class ArticlesController extends AppController {
 			$options = array('conditions' => array('Article.' . $this->Article->primaryKey => $id));
 			$this->request->data = $this->Article->find('first', $options);
 		}
-		$keywords = $this->Article->Keyword->find('list');
-		$players = $this->Article->Player->find('list');
-		$teams = $this->Article->Team->find('list');
-		$this->set(compact('keywords', 'players', 'teams'));
+		$projects = $this->Article->Project->find('list');
+		$skills = $this->Article->Skill->find('list');
+		$this->set(compact('projects', 'skills'));
 	}
 
 /**
@@ -197,82 +113,4 @@ class ArticlesController extends AppController {
 		}
 		return $this->redirect(array('action' => 'index'));
 	}
-
-
-
-/**
- * home method
- *
- * @return void
- */
-	public function home() {
-		$this->Article->recursive = 0;
-		$this->set('articles', $this->Paginator->paginate());
-	}
-
-
-/**
- * framehome method
- *
- * @return void
- */
-	public function framehome() {
-		$this->layout = 'frame7';
-		$this->Article->recursive = 0;
-		$this->set('articles', $this->Paginator->paginate());
-	}
-
-
-/**
- * framehome method
- *
- * @return void
- */
-	public function index2() {
-		$this->layout = 'frame7';
-		$this->Article->recursive = 0;
-		$this->set('articles', $this->Paginator->paginate());
-	}
-
-
-
-/**
- * framehome method
- *
- * @return void
- */
-	public function item() {
-		$this->layout = 'frame7';
-		$this->Article->recursive = 0;
-		$this->set('articles', $this->Paginator->paginate());
-	}
-
-
-/**
- * index method
- *
- * @return void
- */
-	public function indexnormal() {
-		$this->Article->recursive = 0;
-		$this->set('articles', $this->Paginator->paginate());
-	}
-
-/**
- * view method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
-	public function viewbackup($id = null) {
-		$this->layout = 'boots';
-		if (!$this->Article->exists($id)) {
-			throw new NotFoundException(__('Invalid article'));
-		}
-		$options = array('conditions' => array('Article.' . $this->Article->primaryKey => $id));
-		$this->set('article', $this->Article->find('first', $options));
-	}
-
-
 }
